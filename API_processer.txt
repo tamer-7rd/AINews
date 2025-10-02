@@ -1,0 +1,23 @@
+class ApiProcessor(api_url)
+    self.api_url = api_url
+    self.response = response_controller(self.api_url)
+    
+
+    def response_controller(url)
+        response = request()
+        if not response: 
+            do again response (neskolko raz)
+            throw error
+        return response    
+
+
+    
+
+
+
+
+
+
+
+
+    

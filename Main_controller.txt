@@ -1,0 +1,40 @@
+import API_processor, DataBase_processer, News_displayer, NewsService, Page_navigator
+from strategies import MainPageStrategy, ParticularNewsStrategy, CategoryStrategy
+
+api_url = xxx/xxx/xxx/xxx/xxx/xxx
+
+api_processor = ApiProcessor(api_url)
+api_response = api_processor.response
+
+news_service = NewsService()
+news_service.json_normalazier(api_responce)    
+clean_file = news_service.clean_file
+
+DataBase_processer = DataBaseProcessor()
+DataBase_processer.buil_database(clean_file)
+news_db = DataBase_processer.database
+
+main_strategy = MainPageStrategy()
+particular_strategy = ParticularNewsStrategy()
+category_strategy = CategoryStrategy()
+
+news_displayer = News_displayer(main_strategy)
+
+@main_page
+def main_page():
+    news_displayer.set_strategy(main_strategy)  # Переиспользуем существующий экземпляр
+    print(news_displayer.render_page())
+
+@particular_news
+def particular_page():
+    news_displayer.set_strategy(particular_strategy)  # Переиспользуем
+    print(news_displayer.render_page())
+
+@category
+def category():
+    news_displayer.set_strategy(category_strategy)  # Переиспользуем
+    print(news_displayer.render_page())
+
+
+
+

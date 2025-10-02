@@ -1,0 +1,5 @@
+from .base_strategy import RenderStrategy
+
+class MainPageStrategy(RenderStrategy):
+    def render(self):
+        return "Render MAIN page with news feed"

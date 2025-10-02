@@ -1,0 +1,5 @@
+from .base_strategy import RenderStrategy
+
+class CategoryStrategy(RenderStrategy):
+    def render(self):
+        return "Render CATEGORY list"

@@ -1,0 +1,6 @@
+class DataBaseProcessor():
+    self.database = none
+
+    def build_database(file)
+        result = builds database
+        self.database = result

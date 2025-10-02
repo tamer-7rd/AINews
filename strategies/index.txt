@@ -1,0 +1,12 @@
+# Экспорт всех стратегий для удобного импорта
+from .base_strategy import RenderStrategy
+from .main_page_strategy import MainPageStrategy
+from .particular_news_strategy import ParticularNewsStrategy
+from .category_strategy import CategoryStrategy
+
+__all__ = [
+    'RenderStrategy',
+    'MainPageStrategy', 
+    'ParticularNewsStrategy',
+    'CategoryStrategy'
+]
