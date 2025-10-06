@@ -1,5 +1,0 @@
-from .base_strategy import RenderStrategy
-
-class ParticularNewsStrategy(RenderStrategy):
-    def render(self):
-        return "Render PARTICULAR news page"
