@@ -1,5 +1,4 @@
-project_structure
-.env.local
+project_structure/
 
 # Dependencies
 node_modules/
@@ -9,10 +8,8 @@ node_modules/
 out/
 
 # Environment variables
-.env
-.env.development.local
-.env.test.local
-.env.production.local
+.env*
+!.env.example
 
 # System files
 .DS_Store
