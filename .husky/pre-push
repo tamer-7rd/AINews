@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# ESLint: падаем на любом предупреждении
+pnpm exec eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0
+
+# Prettier: проверяем формат (без изменений)
+pnpm exec prettier --check .
