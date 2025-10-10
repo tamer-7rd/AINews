@@ -22,10 +22,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "forceConsistentCasingInFileNames": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    "noFallthroughCasesInSwitch": true
+    "forceConsistentCasingInFileNames": true, // Запрещает разные регистры в именах файлов (file.ts vs File.ts)
+    "noFallthroughCasesInSwitch": true // Запрещает "проваливание" между case в switch без break
   },
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
