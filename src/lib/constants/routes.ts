@@ -2,14 +2,14 @@ import type { ComponentType, SVGProps } from 'react'
 import { HiChartBar, HiHome, HiNewspaper } from 'react-icons/hi2'
 import { FaTwitter, FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa'
 
-interface NavLink {
+type NavLink = {
   href: string
   label: string
   icon: ComponentType<SVGProps<SVGSVGElement>>
   // Это единственный способ в TypeScript передать структуру данных внутрь другого типа. (то что сверху этого коммента)
 }
 
-interface FooterLink {
+type FooterLink = {
   href: string
   label: string
   isExternal?: boolean
