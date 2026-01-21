@@ -1,0 +1,11 @@
+from strategies import RenderStrategy
+
+class NewsDisplayer:
+    def __init__(self, strategy: RenderStrategy):
+        self.strategy = strategy
+
+    def set_strategy(self, strategy: RenderStrategy):
+        self.strategy = strategy
+
+    def render_page(self):
+        return self.strategy.render()
