@@ -1,0 +1,5 @@
+from .base_strategy import RenderStrategy
+
+class SearchStrategy(RenderStrategy):
+    def render(self):
+        return "Render SEARCHED_NEWS list"
