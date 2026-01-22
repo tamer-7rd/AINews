@@ -1,4 +1,4 @@
-import NewsCard from '@/components/News/NewsCard'
+import NewsCard from '@/features/news/components/NewsCard'
 
 export default function Home() {
   return (
