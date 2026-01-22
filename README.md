@@ -1,1 +1,1 @@
-AI News App
+AI News & Analytics Web App
