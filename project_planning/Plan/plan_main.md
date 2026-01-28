@@ -437,17 +437,31 @@ MVP-1 и MVP-2 (фиксируем)
 
 - Sentry + structured logs
 - rate limiting на публичные API и формы
+- **Security Hardening:**
+  - CSRF защита: токены + SameSite cookies (Strict/Lax)
+  - XSS защита: CSP headers + санитизация пользовательского ввода
+  - CORS: white-list доменов (credentials: true только для фронта)
+  - HttpOnly + Secure флаги для auth cookies
+- **Caching Strategy (финализация):**
+  - Browser cache: Cache-Control headers для статики (js/css/images)
+  - CDN настройка для глобальной раздачи (если используется)
+  - Redis для session storage + hot data (если внедрён)
+  - TTL + инвалидация: документировать правила и стратегию
 - CI/CD: unit+integration+e2e в PR, coverage
 - Docker (reproducible run) + документация
 - SEO/a11y финальная полировка, Lighthouse цели
 
 **Tech/skills**
 
-- эксплуатация, безопасность, релизный цикл, наблюдаемость
+- эксплуатация, релизный цикл, наблюдаемость
+- Web Security: XSS, CSRF, CORS, cookie security (HttpOnly/Secure/SameSite)
+- Caching: browser cache headers, CDN, Redis, TTL/invalidation strategies
 
 **Артефакты (финализация)**
 
 - финальная версия ARCHITECTURE.md, API_CONTRACT.md, DATA_MODEL.md, DECISIONS.md
+- SECURITY.md: XSS/CSRF/CORS настройки + cookie политика + rate limits + checklist
+- CACHING_STRATEGY.md: что кэшируем, где, TTL, правила инвалидации (browser/CDN/Redis)
 - RUNBOOK.md: как дебажить 500, где смотреть логи, как проверять webhooks, как откатываться
 - Dockerfile + docker-compose
 
@@ -455,6 +469,8 @@ MVP-1 и MVP-2 (фиксируем)
 
 - проект разворачивается "с нуля по доке"
 - ошибки и деградации ловятся, релизы предсказуемы
+- security checklist выполнен: CSRF/XSS/CORS настроены, auth cookies защищены
+- кэширование работает: статика отдаётся с правильными headers, hot data в Redis (если внедрён)
 
 ---
 
