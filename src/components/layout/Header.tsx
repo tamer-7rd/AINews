@@ -32,7 +32,7 @@ export default function Header() {
   }, [closeMenu, isMobileMenuOpen])
 
   return (
-    <header className="header-footer-container px-4">
+    <header className="header-container px-4">
       {/* Desktop version  */}
       <div className="hidden items-center sm:flex sm:flex-nowrap py-1">
         <Logo className="flex-shrink-0 mb-0.5" />

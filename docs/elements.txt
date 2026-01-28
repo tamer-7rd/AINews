@@ -90,6 +90,7 @@
 6. Button 
     variants: primary (example: Sign in) / secondary (example: Load more)
 
-7. PageLayout - ? 
-    AppShell - ? 
-    MainGrid - ? 
+7. PageLayout
+    AppShell  
+    MainGrid - kogda sozdash newsfeed  
+    PageLayout - esli ponadobitsa

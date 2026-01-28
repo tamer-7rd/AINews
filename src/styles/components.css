@@ -37,9 +37,9 @@
     color: var(--color-logo-accent);
   }
 
-  .header-footer-container {
+  .header-container {
     background-color: var(--color-header-bg);
-    color: var(--color-text-header-footer);
+    color: var(--color-text-header);
   }
 
   .searchbar-container {
@@ -68,10 +68,6 @@
 
   .btn-secondary {
     text-decoration-color: var(--color-button-decoration);
-  }
-
-  .main-container {
-    color: var(--color-text-body);
   }
 
   .link-body {
