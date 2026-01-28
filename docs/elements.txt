@@ -1,0 +1,95 @@
+0. Base 
+    GlassCard (Card wrapper)
+        variants: panel (soft - analytics) / card (more agressive - NewsFeed)
+        states: hover 
+        props:
+
+    Badge
+        var: neutral / success / warning
+
+    IconButton
+        var: full / compact
+        states: hover, aria-pressed -?, active, withDot (notification)
+
+
+1. AppHeader 
+    MenuButton (on IconButton's base) - тут будет и footer и другие ссылки по необходимости
+
+    Logo 
+        variants: full / compact
+        states: hover 
+
+    SearchBar
+        var: full / compact
+
+    HeaderActions 
+        NotificationButton (on IconButton's base)  
+            states: hover 
+
+        UserMenuTrigger (avatar + name + arrow)
+            states: hover
+
+        Button (if user is not logged in (guest mode))
+            var: full / compact
+            
+
+
+2. Navigation (Left side bar + mobile tab bar)
+    SidebarNav (renders NavItem list)
+
+    NavItem (icon + label)
+        var: active / inactive
+        states: hover / active
+    
+    BottomTabBar (mobile) (renders NavItem list)
+        var: active / inactive
+        states: hover / active
+
+3. ChipsBar (switches the news)
+        states: isOverflowing (if chips are more than the width -> show fade on the sides)
+        Bonus: Tab (walks on buttons), Enter, Right / Left buttons, Auto scroll to the center when choosing button.
+
+    Chip (one tablet)
+        props: label, value, selected, disabled, onPress()
+        states: selected / default
+        size: sm | md
+
+    ChipsFadeEdges 
+
+    ChipsScrollButtons (on desktop <- ->)    
+
+4. NewsFeed
+    FeedSectionHeader 
+        Title 
+        StatusDot + text 
+        ChipsBar
+
+    ArticleCard
+        variants: hero / standart / mobileStandart     
+        states: interactive / bookmarked / loading 
+
+        CardMedia (img + gradient overlay)
+
+	    CardBadges (category + read time)
+
+		CardTitle (line-clamp)
+
+		CardExcerpt (line-clamp)
+
+		CardFooter
+
+		SourceLabel (example “Terminal One News”)
+
+		CardActions (share/bookmark) on IconButton
+
+		for hero:
+		    AuthorChip (icon + label “DeepMind Research / Verified Analysis”)
+
+5. AnalyticsSidebar 
+
+6. Button 
+    variants: primary (example: Sign in) / secondary (example: Load more)
+
+7. PageLayout - ? 
+    AppShell - ? 
+    MainGrid - ? 
