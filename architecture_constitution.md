@@ -156,3 +156,30 @@ src/server/            # server-only модули (BFF, интеграции, ob
 - Архитектура (подробно): `project_planning/Plan/additional_planDocs/ARCHITECTURE.md`
 - API контракт: `project_planning/Plan/additional_planDocs/API_CONTRACT.md`
 - Observability: `project_planning/Plan/additional_planDocs/OBSERVABILITY.md`
+
+## 9) CSS Architecture & Styling Rules
+
+### Трёхуровневая система стилей:
+
+1. **CSS Variables (`src/app/globals.css`)**
+   - Глобальные дизайн-токены (цвета, темы)
+   - Используются через `var(--color-*)`
+   - Поддержка темной темы через `@media (prefers-color-scheme: dark)`
+
+2. **Component Classes (`src/styles/components.css`)**
+   - Повторяющиеся паттерны стилей
+   - Типография + цвета
+   - Комбинация Tailwind (`@apply`) + CSS переменных
+   - Семантические классы: `.btn-primary`, `.text-body`, `.logo-container`
+
+3. **Tailwind Utilities (в JSX)**
+   - Уникальные стили компонентов
+   - Layout и spacing: `flex`, `p-4`, `sm:hidden`
+   - Используются прямо в `className` компонентов
+
+### Правила:
+
+- ✅ Цвета → CSS переменные в `globals.css`
+- ✅ Повторяющиеся комбинации → классы в `components.css`
+- ✅ Уникальные стили → Tailwind утилиты в JSX
+- ❌ Не дублировать стили между уровнями

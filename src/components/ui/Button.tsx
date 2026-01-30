@@ -15,11 +15,11 @@ export default function Button({
   variant = 'primary',
   className = '',
 }: ButtonProps) {
-  const defaultClasses = 'border button-border rounded-4xl text-button sm:font-light min-w-40 p-2'
+  const defaultClasses = 'border button-border rounded-4xl text-button sm:font-base min-w-40 p-2'
 
   const variantClasses = {
-    primary: 'btn-primary underline underline-offset-6 decoration-1 duration-300',
-    secondary: 'btn-secondary underline underline-offset-6',
+    primary: 'btn-primary decoration-1 duration-300',
+    secondary: 'btn-secondary',
   }
 
   return (

@@ -1,104 +1,23 @@
 'use client'
-
-import { useCallback, useEffect, useState } from 'react'
-import { HiBars3, HiXMark } from 'react-icons/hi2'
-import Button from '../ui/Button'
 import Logo from '../common/Logo'
 import SearchBar from './SearchBar'
-import Navigation from './Navigation'
+import MenuButton from '../ui/MenuButton'
+import HeaderActions from './HeaderActions'
 
 export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const toggleMenu = () => setIsMobileMenuOpen((prev) => !prev)
-  const closeMenu = useCallback(() => setIsMobileMenuOpen(false), [])
-
-  useEffect(() => {
-    if (!isMobileMenuOpen) return
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        closeMenu()
-      }
-    }
-
-    document.addEventListener('keydown', handleKeyDown)
-    document.body.style.overflow = 'hidden'
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-      document.body.style.overflow = ''
-    }
-  }, [closeMenu, isMobileMenuOpen])
-
   return (
-    <header className="header-container px-4">
+    <header className="header-container px-6">
       {/* Desktop version  */}
-      <div className="hidden items-center sm:flex sm:flex-nowrap py-1">
-        <Logo className="flex-shrink-0 mb-0.5" />
-        <Navigation withLabels linkKey="mainNavLinks" className="pl-4" linkClassName="m-2" />
-        <SearchBar className="sm:flex-1 sm:px-4" />
-        <Button variant="primary" className="mr-2">
-          Subscribe
-        </Button>
-        <Button variant="primary">Sign in</Button>
-      </div>
-
-      {/* Mobile version  */}
-      <div className="sm:hidden items-center flex justify-between py-2">
-        <Logo />
-        <div className="flex gap-4 items-center">
-          <SearchBar />
-          <button
-            type="button"
-            aria-expanded={isMobileMenuOpen}
-            aria-label="Open navigation menu"
-            onClick={toggleMenu}
-          >
-            <HiBars3 className="size-7" aria-hidden="true" />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile opened menu */}
-      {isMobileMenuOpen && (
-        <>
-          <div
-            className="z-40 inset-0  backdrop-blur-sm bg-[#181a1b]/75 sm:hidden fixed"
-            aria-hidden="true"
-          />
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label="Mobile navigation menu"
-            className="z-50 sm:hidden fixed inset-0 flex flex-col m-5 overflow-y-auto"
-          >
-            <div className="flex justify-between items-center">
-              <Logo />
-              <button type="button" aria-label="Close navigation menu" onClick={closeMenu}>
-                <HiXMark className="size-7"></HiXMark>
-              </button>
-            </div>
-
-            <div className="flex flex-col py-7 gap-3">
-              <Button variant="primary">Subscribe</Button>
-              <Button variant="primary">Sign in</Button>
-            </div>
-
-            <Navigation
-              className="w-1/3"
-              onItemClick={closeMenu}
-              ariaLabel="Mobile Primary Navigation"
-              orientation="vertical"
-              withLabels
-              withIcons
-              linkKey="mainNavLinks" // keys variants defined in Navigation.tsx
-              iconClassName="size-6"
-              linkClassName="flex gap-3 py-3 text-lg tracking-wide"
-            />
+      <div className="hidden items-center sm:flex sm:flex-nowrap py-2 justify-between">
+        <div className="flex flex-row gap-7">
+          <MenuButton />
+          <div className="-mt-1">
+            <Logo />
           </div>
-        </>
-      )}
+        </div>
+        <SearchBar />
+        <HeaderActions />
+      </div>
     </header>
   )
 }

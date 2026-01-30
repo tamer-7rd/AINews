@@ -83,7 +83,12 @@ const config = [
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     rules: {
-      'no-console': 'warn',
+      // pre-commit: console.log игнорируется (правило выключено)
+      // pre-push/CI: console.log = warning, console.warn/error разрешены
+      'no-console':
+        process.env.PREPUSH || process.env.CI
+          ? ['warn', { allow: ['warn', 'error'] }]
+          : 'off',
     },
   },
 ]

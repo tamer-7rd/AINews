@@ -1,3 +1,4 @@
-# Проверяем формат без изменений 
-pnpm lint --max-warnings=0 && echo "ESLint passed"
+# Проверяем формат без изменений
+# PREPUSH=true включает проверку console.log (см. eslint.config.mjs)
+PREPUSH=true pnpm lint --max-warnings=0 && echo "ESLint passed"
 pnpm typecheck && echo "TypeScript passed"

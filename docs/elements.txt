@@ -8,7 +8,6 @@
         var: neutral / success / warning
 
     IconButton
-        var: full / compact
         states: hover, aria-pressed -?, active, withDot (notification)
 
 
@@ -16,7 +15,6 @@
     MenuButton (on IconButton's base) - тут будет и footer и другие ссылки по необходимости
 
     Logo 
-        variants: full / compact
         states: hover 
 
     SearchBar
@@ -27,10 +25,11 @@
             states: hover 
 
         UserMenuTrigger (avatar + name + arrow)
-            states: hover
+            Avatar
+                states: hover 
+
 
         Button (if user is not logged in (guest mode))
-            var: full / compact
             
 
 
@@ -41,7 +40,7 @@
         var: active / inactive
         states: hover / active
     
-    BottomTabBar (mobile) (renders NavItem list)
+    BottomTabBar (mobile) (renders NavItem list + AvatarElement)
         var: active / inactive
         states: hover / active
 

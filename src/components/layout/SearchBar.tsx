@@ -1,19 +1,14 @@
 import { HiMagnifyingGlass } from 'react-icons/hi2'
 import Input from '../ui/Input'
-import cn from '@/lib/utils/cn'
 
-type SearchBarProps = {
-  className?: string
-}
-
-export default function SearchBar({ className }: SearchBarProps) {
+export default function SearchBar() {
   return (
-    <div className={cn('relative', className)}>
+    <div className="relative w-1/2">
       <Input
         type="text"
-        placeholder="Search Narraive"
+        placeholder="Search AI trends, models, or companies..."
         aria-label="Search website"
-        className="hidden sm:block"
+        className="hidden sm:block rounded-4xl"
       />
       <HiMagnifyingGlass
         // Hide on mobile, show on desktop (block)

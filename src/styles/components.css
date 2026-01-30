@@ -16,13 +16,21 @@
     @apply text-lg sm:text-base tracking-wider;
   }
 
+  .text-plan {
+    @apply text-xs text-gray-400;
+  }
+
+  .text-profile {
+    @apply text-base sm:text-xs font-light tracking-wide;
+  }
+
   /* ===== Border & Colors ===== */
   .button-border {
     border-color: var(--color-border);
   }
 
   .logo-container {
-    @apply text-3xl sm:text-[2.75rem] font-bold font-logo;
+    @apply text-3xl sm:text-[2rem] font-bold font-logo;
     letter-spacing: 0.05em;
     color: var(--color-text-primary);
   }
