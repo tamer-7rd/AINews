@@ -4,14 +4,6 @@
     @apply text-base sm:text-sm font-light tracking-wide;
   }
 
-  .text-body-bold {
-    @apply text-base sm:text-sm font-bold tracking-wider;
-  }
-
-  .text-section-title {
-    @apply text-base sm:text-sm font-bold tracking-wider uppercase;
-  }
-
   .text-button {
     @apply text-lg sm:text-base tracking-wider;
   }
@@ -76,13 +68,5 @@
 
   .btn-secondary {
     text-decoration-color: var(--color-button-decoration);
-  }
-
-  .link-body {
-    color: var(--color-link-body);
-  }
-
-  .news-date {
-    color: var(--color-news-date);
   }
 }

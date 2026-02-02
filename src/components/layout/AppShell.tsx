@@ -1,4 +1,5 @@
 import Header from './Header'
+import SidebarNav from './SidebarNav'
 
 type AppShellProps = {
   children: React.ReactNode
@@ -6,11 +7,10 @@ type AppShellProps = {
 
 export default function AppShell({ children }: AppShellProps) {
   return (
-    <>
-      <div className="flex flex-col">
-        <Header />
-        <main>{children}</main>
-      </div>
-    </>
+    <div className="">
+      <Header />
+      <SidebarNav />
+      <main>{children}</main>
+    </div>
   )
 }

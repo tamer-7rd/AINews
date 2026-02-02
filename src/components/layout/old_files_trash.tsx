@@ -72,7 +72,7 @@ export default function Header() {
             <div className="flex justify-between items-center">
               <Logo />
               <button type="button" aria-label="Close navigation menu" onClick={closeMenu}>
-                <HiXMark className="size-7"></HiXMark>
+                <HiXMark className="size-7" />
               </button>
             </div>
 

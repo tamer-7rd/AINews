@@ -9,9 +9,9 @@
   --color-page-bg: #ffffff;
   --color-logo-accent: #00FFFF; 
   --color-border: #4b5563be;
-  --color-header-bg: oklch(13% 0.028 261.692); 
-  --color-text-header: #ffffff;
-  --color-text-body: #000000;
+  --color-header-bg: #ffffff;
+  --color-text-header: #0F0F0F;
+  --color-text-body: #0F0F0F;
   --color-text-muted: oklch(70.7% 0.022 261.325);
   --color-button-primary-bg: #22d3ee;
   --color-button-primary-hover: #0f172a;
@@ -26,6 +26,8 @@
   :root {
     --color-page-bg: oklch(13% 0.028 261.692); 
     --color-text-body: #ffffff;
+    --color-header-bg: oklch(13% 0.028 261.692); 
+    --color-text-header: #ffffff;
   }
 }
 

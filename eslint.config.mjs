@@ -1,97 +1,71 @@
+// eslint.config.mjs – flat configuration for Next.js 16+
+import { defineConfig, globalIgnores } from 'eslint/config'
 import js from '@eslint/js'
-import { FlatCompat } from '@eslint/eslintrc'
-import path from 'path'
-import { fileURLToPath } from 'url'
-import tseslint from '@typescript-eslint/eslint-plugin'
-import tsparser from '@typescript-eslint/parser'
+import nextVitals from 'eslint-config-next/core-web-vitals'
+import nextTs from 'eslint-config-next/typescript'
+import eslintConfigPrettier from 'eslint-config-prettier/flat'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  resolvePluginsRelativeTo: __dirname,
-})
-
-// ВАЖНО: Известная проблема с FlatCompat и конфигурацией Next.js
-// Конфигурации Next.js создают циклическую структуру при преобразовании в flat config
-// Используем только базовые правила ESLint до исправления проблемы
-// Следите за обновлениями: https://github.com/eslint/eslint/issues
-let nextConfigs = []
-try {
-  // Пробуем загрузить конфигурации Next.js по отдельности
-  const coreWebVitals = compat.config({
-    extends: ['next/core-web-vitals'],
-  })
-  const typescript = compat.config({
-    extends: ['next/typescript'],
-  })
-  const prettier = compat.config({
-    extends: ['prettier'],
-  })
-  nextConfigs = [...coreWebVitals, ...typescript, ...prettier]
-} catch {
-  // Если возникает ошибка, используем только базовые правила
-  // Это временное решение до исправления проблемы в @eslint/eslintrc или eslint-config-next
-  // TODO: Обновить когда будет исправлена проблема с циклической структурой
-}
-
-// Основная конфигурация ESLint (массив объектов)
-const config = [
-  // 1. Файлы и папки, которые ESLint должен игнорировать
+export default defineConfig([
+  // ignore patterns
   {
     ignores: [
-      'node_modules/**', // папка с зависимостями
-      '.next/**', // папка сборки Next.js
-      'next-env.d.ts', // автогенерируемый файл Next.js
-      'postcss.config.js', // конфигурация PostCSS (CommonJS)
-      'prettier.config.js', // конфигурация Prettier (CommonJS)
+      'node_modules/**',
+      '.next/**',
+      'next-env.d.ts',
+      'out/**',
+      'build/**',
+      'postcss.config.js',
+      'prettier.config.js',
     ],
   },
 
-  // 2. Базовые правила JavaScript (рекомендуемые)
+  // JavaScript rules
   {
     ...js.configs.recommended,
-    files: ['**/*.{js,jsx}'], // Применяем к JS файлам
+    files: ['**/*.{js,jsx}'],
   },
 
-  // 3. Конфигурация для TypeScript файлов
-  {
-    files: ['**/*.{ts,tsx}'], // TypeScript файлы
-    languageOptions: {
-      parser: tsparser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-    },
-    plugins: {
-      '@typescript-eslint': tseslint,
-    },
-    rules: {
-      ...tseslint.configs.recommended.rules,
-      'no-unused-vars': 'off', // Отключаем базовое правило, используем TypeScript версию
-      '@typescript-eslint/no-unused-vars': 'warn',
-    },
-  },
+  // Next.js Core Web Vitals preset (includes react-hooks)
+  ...nextVitals,
 
-  // 4. Подключаем правила из других конфигов (если загружены)
-  ...nextConfigs,
+  // Next.js TypeScript preset (includes @typescript-eslint)
+  ...nextTs,
+
+  // Disable rules that conflict with Prettier
+  eslintConfigPrettier,
+
+  // Override default Next.js ignores
+  globalIgnores([
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+  ]),
+
+  // Custom rules
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     rules: {
-      // pre-commit: console.log игнорируется (правило выключено)
-      // pre-push/CI: console.log = warning, console.warn/error разрешены
+      // TypeScript: смягчаем no-unused-vars до warn
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
+
+      // Console: игнор в pre-commit, warn в pre-push/CI
       'no-console':
         process.env.PREPUSH || process.env.CI
           ? ['warn', { allow: ['warn', 'error'] }]
           : 'off',
+
+      // React Hooks: правильное использование хуков
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
+
+      // React: самозакрывающиеся теги для пустых компонентов
+      'react/self-closing-comp': 'warn',
+
+      // Качество кода
+      'eqeqeq': ['warn', 'always'], // === вместо ==
+      'no-debugger': 'warn', // напоминание убрать debugger
     },
   },
-]
-
-// Экспортируем конфигурацию для ESLint
-export default config
+])
