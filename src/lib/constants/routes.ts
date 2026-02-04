@@ -1,12 +1,19 @@
 import type { ComponentType, SVGProps } from 'react'
-import { HiChartBar, HiHome, HiNewspaper } from 'react-icons/hi2'
+import {
+  HiChartBar,
+  HiHome,
+  HiNewspaper,
+  HiOutlineChartBar,
+  HiOutlineHome,
+  HiOutlineNewspaper,
+} from 'react-icons/hi2'
 import { FaTwitter, FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa'
 
 type NavLinkProps = {
   href: string
   label: string
   icon: ComponentType<SVGProps<SVGSVGElement>>
-  // Это единственный способ в TypeScript передать структуру данных внутрь другого типа. (то что сверху этого коммента)
+  activeIcon: ComponentType<SVGProps<SVGSVGElement>>
 }
 
 type SocialLinkProps = {
@@ -17,9 +24,9 @@ type SocialLinkProps = {
 }
 
 export const mainNavLinks: NavLinkProps[] = [
-  { href: '/', label: 'Home', icon: HiHome },
-  { href: '/news', label: 'News', icon: HiNewspaper },
-  { href: '/analytics', label: 'Analytics', icon: HiChartBar },
+  { href: '/', label: 'Home', icon: HiOutlineHome, activeIcon: HiHome },
+  { href: '/news', label: 'News', icon: HiOutlineNewspaper, activeIcon: HiNewspaper },
+  { href: '/analytics', label: 'Analytics', icon: HiOutlineChartBar, activeIcon: HiChartBar },
 ]
 
 export const socialLinks: SocialLinkProps[] = [

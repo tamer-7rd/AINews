@@ -12,23 +12,23 @@
   --color-header-bg: #ffffff;
   --color-text-header: #0F0F0F;
   --color-text-body: #0F0F0F;
-  --color-text-muted: oklch(70.7% 0.022 261.325);
+  --color-icon: #0F0F0F;
+  --color-text-muted: oklch(65.7% 0.022 261.325);
   --color-button-primary-bg: #22d3ee;
   --color-button-primary-hover: #0f172a;
-  --color-link-hover: #00FFFF;
-  --color-button-decoration: #67e8f9;
-  --color-link-body: #00FFFF; 
-  --color-news-date: #7A7A7A;
+  --color-navigation-hover: rgba(0, 0, 0, 0.05);
 }
 
 /* Темная тема */
 @media (prefers-color-scheme: dark) {
   :root {
     --color-page-bg: oklch(13% 0.028 261.692); 
-    --color-text-body: #ffffff;
+    --color-text-body: #F1F1F1;
     --color-header-bg: oklch(13% 0.028 261.692); 
-    --color-text-header: #ffffff;
-  }
+    --color-text-header: #F1F1F1;
+    --color-icon: #F1F1F1;
+    --color-navigation-hover: rgba(255, 255, 255, 0.1);
+}
 }
 
 @layer base{

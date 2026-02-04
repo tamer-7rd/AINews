@@ -8,24 +8,24 @@ type NavItemProps = {
   href: string
   label: string
   icon: ComponentType<SVGProps<SVGSVGElement>>
+  activeIcon: ComponentType<SVGProps<SVGSVGElement>>
 }
 
-export default function NavItem({ href, label, icon }: NavItemProps) {
+export default function NavItem({ href, label, icon, activeIcon }: NavItemProps) {
   const pathname = usePathname()
   const isActive = pathname === href
-  const Icon = icon
+  const Icon = isActive ? activeIcon : icon
 
   return (
     <Link
       href={href}
-      className={`
+      className=" 
                 flex flex-col items-center justify-center gap-2 py-6
-                hover:bg-gray-800 transition-colors
-                ${isActive ? 'text-white' : 'text-gray-400'}
-            `}
+                transition-colors navitem-container
+              "
     >
       <Icon className="w-6 h-6" />
-      <span className="text-xs uppercase font-medium">{label}</span>
+      <span className="text-body">{label}</span>
     </Link>
   )
 }

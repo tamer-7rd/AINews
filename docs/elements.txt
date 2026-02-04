@@ -36,6 +36,8 @@
 2. Navigation (Left side bar + mobile tab bar)
     SidebarNav (renders NavItem list)
 
+    SidebarMenuNav
+
     NavItem (icon + label)
         var: active / inactive
         states: hover / active

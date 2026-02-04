@@ -1,7 +1,10 @@
 @layer components {
-  /* ===== Typography System ===== */
-  .text-body {
+  .text-search {
     @apply text-base sm:text-sm font-light tracking-wide;
+  }
+
+  .text-body {
+    @apply text-base sm:text-xs font-normal;
   }
 
   .text-button {
@@ -9,14 +12,14 @@
   }
 
   .text-plan {
-    @apply text-xs text-gray-400;
+    @apply text-xs font-normal;
+    color: var(--color-text-muted);
   }
 
   .text-profile {
-    @apply text-base sm:text-xs font-light tracking-wide;
+    @apply text-base sm:text-xs font-normal;
   }
 
-  /* ===== Border & Colors ===== */
   .button-border {
     border-color: var(--color-border);
   }
@@ -42,6 +45,15 @@
     color: var(--color-text-header);
   }
 
+  .navitem-container {
+    color: var(--color-icon);
+    border-radius: 1rem;
+  }
+
+  .navitem-container:hover {
+    background-color: var(--color-navigation-hover);
+  }
+
   .searchbar-container {
     border-color: var(--color-border);
     color: var(--color-text-primary);
@@ -52,7 +64,7 @@
   }
 
   .searchbar-icon {
-    color: var(--color-text-muted);
+    color: var(--color-icon);
   }
 
   .btn-primary {

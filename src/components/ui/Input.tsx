@@ -9,7 +9,7 @@ export default function Input({
   ...rest
 }: Props) {
   const baseInputClasses =
-    'searchbar-container w-full rounded-md border pl-4 pr-10 py-2 text-body sm:placeholder:font-light focus:outline-none'
+    'searchbar-container w-full rounded-md border pl-4 pr-10 py-2 text-search sm:placeholder:font-light focus:outline-none'
 
   return (
     <div className="relative">
